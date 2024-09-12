@@ -1,7 +1,6 @@
 <script setup>
-
-
 </script>
 <template>
-        <h1>Hello World</h1>
+    <Head title=" | Home" />
+    <h1>Hello World</h1>
 </template>
