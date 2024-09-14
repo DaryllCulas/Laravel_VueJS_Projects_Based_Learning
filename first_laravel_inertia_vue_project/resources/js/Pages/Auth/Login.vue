@@ -3,32 +3,26 @@ import { useForm } from '@inertiajs/vue3'
 import TextInput from '../components/TextInput.vue'
 
 const form = useForm({
-    name: null,
     email: null,
     password: null,
-    password_confirmation: null
+    remember: null
 })
 
 const submit = () => {
-    form.post(route('register'), {
-        onError: () => form.reset('password', 'password_confirmation')
+    console.log('Remember value:', form.remember);
+    form.post(route('login'), {
+        onError: () => form.reset('password','remember')
     })
 }
 </script>
 
 <template>
-    <Head title="Register" />
+    <Head title="Login" />
 
-    <h1 class="title">Register a new account!</h1>
+    <h1 class="title">Login to your account!</h1>
 
     <div class="w-2/4 mx-auto">
         <form @submit.prevent="submit">
-            <TextInput
-                name="Name"
-                v-model="form.name"
-                type="text"
-                :message="form.errors.name"
-            />
             <TextInput
                 name="Email"
                 v-model="form.email"
@@ -41,17 +35,17 @@ const submit = () => {
                 type="password"
                 :message="form.errors.password"
             />
-            <TextInput
-                name="Confirm Password"
-                v-model="form.password_confirmation"
-                type="password"
-                :message="form.errors.password_confirmation"
-            />
-            <div>
-                <p class="text-slate-600 mb-2">
-                    Already a user?
-                    <a :href="route('login')" class="text-link">Login</a>
+            <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                    <input type="checkbox" v-model="form.remember" id="remember"/>
+                    <label for="remember">Remember Me</label>
+                </div>
+                <p class="text-slate-600">
+                    Need an account?
+                    <a :href="route('register')" class="text-link">Register</a>
                 </p>
+            </div>
+            <div>
                 <button class="primary-btn" :disabled="form.processing">
                     Login
                 </button>

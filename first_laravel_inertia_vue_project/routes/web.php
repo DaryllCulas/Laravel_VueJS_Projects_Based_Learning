@@ -10,3 +10,6 @@ ROute::post('/register', [AuthController::class, 'register']);
 
 
 Route::inertia('/about', 'About', ['user' => 'Nigga'])->name('about');
+
+Route::inertia('login', 'Auth/Login')->name('login');
+Route::post('/login', [AuthController::class, 'login']);
