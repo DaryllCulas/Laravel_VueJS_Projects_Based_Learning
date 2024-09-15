@@ -1,12 +1,16 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'Home')->name('home');
 
+
 Route::middleware('auth')->group(function () {
-    Route::inertia('/dashboard', 'Dashboard')->name('dashboard');
+    Route::inertia('/dashboard', 'Dashboard', ['users' => User::paginate(5)])->name('dashboard');
+
+
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
