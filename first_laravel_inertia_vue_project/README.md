@@ -29,6 +29,11 @@ You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+WATCH: https://www.youtube.com/playlist?list=PL38wFHH4qYZXCW2rlBLNdHi5cv-v_qlXO by <b>Learn with Jon </b>
+
+## CREDITS TO LEARN WITH JON: https://www.youtube.com/@LearnWithJonVadar
+
+
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
