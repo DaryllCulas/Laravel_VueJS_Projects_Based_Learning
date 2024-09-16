@@ -12,7 +12,7 @@ class AuthController extends Controller
     public function register(Request $request)
      {
 
-        sleep(0.5);
+        // sleep(0.5);
 
 
         // Validate
@@ -49,7 +49,9 @@ class AuthController extends Controller
         if (Auth::attempt($fields, $request->remember)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            $user = Auth::user();
+
+            return redirect()->intended('dashboard')->with('greet', 'Welcome ' . $user->name . ' to Laravel Inertia Vue App');
         }
 
         return back()->withErrors([

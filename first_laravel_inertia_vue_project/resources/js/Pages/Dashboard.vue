@@ -1,10 +1,20 @@
 <!--eslint-disable vue/no-v-text-v-html-on-component-->
 <script setup>
+import { ref, watch } from "vue";
 import PaginationLinks from "./components/PaginationLinks.vue";
+import { router } from "@inertiajs/vue3";
+import { debounce } from "lodash";
 
-defineProps({
+const props = defineProps({
   users: Object,
+  searchTerm: String,
 });
+
+const search = ref(props.searchTerm);
+
+watch(search, (q) =>
+  debounce(router.get("/dashboard", { search: q }, { preserveState: true }), 500)
+);
 
 // Format Date
 const getDate = (date) =>
@@ -19,6 +29,14 @@ const getDate = (date) =>
     <!-- <h1 class="title">Welcome Back, {{ $page.props.auth.user.name }}</h1> -->
     <div>
       <p class="title p-4 bg-green-200">{{ $page.props.flash.greet }}</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="flex justify-end mb-4">
+      <div class="w-1/4">
+        <input type="search" placeholder="Search" v-model="search" />
+      </div>
     </div>
   </div>
 

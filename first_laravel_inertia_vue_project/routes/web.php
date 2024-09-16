@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SearchController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -8,7 +9,7 @@ Route::inertia('/', 'Home')->name('home');
 
 
 Route::middleware('auth')->group(function () {
-    Route::inertia('/dashboard', 'Dashboard', ['users' => User::paginate(5)])->name('dashboard');
+    Route::get('/dashboard', [SearchController::class, 'SearchDashboard'])->name('dashboard');
 
 
 
