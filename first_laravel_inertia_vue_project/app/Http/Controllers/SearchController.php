@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
@@ -14,7 +15,12 @@ class SearchController extends Controller
                 return $this->SearchQuery($request, $query);
             })->paginate(5)->withQueryString(),
 
-            'searchTerm' => $request->search
+            'searchTerm' => $request->search,
+            'can' => [
+                'delete_user' =>
+                Auth::user() ? Auth::user()
+                    ->can('delete', User::class) : null
+            ],
         ]);
     }
 
