@@ -5,10 +5,10 @@ const postCreating = ref(false);
 </script>
 
 <template>
-  <div class="py-6">
+  <div class="p-4 bg-white rounded-lg border mb-3">
     <div
       @click="postCreating = true"
-      class="py-3 px-2 text-gray-500 border border-gray-300 rounded mb-3"
+      class="py-3 px-2 text-gray-300 border-2 border-gray-300 rounded mb-3"
     >
       Click here to create new post
     </div>
