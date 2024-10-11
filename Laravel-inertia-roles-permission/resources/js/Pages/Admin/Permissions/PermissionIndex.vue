@@ -35,7 +35,7 @@ defineProps(["permissions"]);
             <TableRow
               v-for="permission in permissions"
               :key="permission.id"
-              class="border-b"
+              class="border-b text-black"
             >
               <TableDataCell>{{ permission.id }}</TableDataCell>
               <TableDataCell>{{ permission.name }}</TableDataCell>

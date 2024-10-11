@@ -26,7 +26,7 @@ defineProps(["users"]);
             </TableRow>
           </template>
           <template #default>
-            <TableRow v-for="user in users" :key="user.id" class="border-b">
+            <TableRow v-for="user in users" :key="user.id" class="border-b text-black">
               <TableDataCell>{{ user.id }}</TableDataCell>
               <TableDataCell>{{ user.name }}</TableDataCell>
               <TableDataCell>{{ user.email }}</TableDataCell>
