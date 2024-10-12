@@ -1,12 +1,34 @@
 <script setup>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, Link, useForm } from "@inertiajs/vue3";
+import { ref } from "vue";
 import Table from "@/Components/Table.vue";
 import TableRow from "@/Components/TableRow.vue";
 import TableHeaderCell from "@/Components/TableHeaderCell.vue";
 import TableDataCell from "@/Components/TableDataCell.vue";
+import Modal from "@/Components/Modal.vue";
+import DangerButton from "@/Components/DangerButton.vue";
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 defineProps(["users"]);
+const form = useForm({});
+
+const showConfirmDeleteUserModal = ref(false);
+
+const confirmDeleteUser = () => {
+  showConfirmDeleteUserModal.value = true;
+};
+
+const closeModal = () => {
+  showConfirmDeleteUserModal.value = false;
+};
+
+const deleteUser = (id) => {
+  form.delete(route("users.destroy", id), {
+    onSuccess: () => closeModal(),
+    preserveScroll: true,
+  });
+};
 </script>
 
 <template>
@@ -50,6 +72,19 @@ defineProps(["users"]);
                 >
                   Delete
                 </button>
+                <Modal :show="showConfirmDeleteUserModal" @close="closeModal">
+                  <div class="p-6">
+                    <h2 class="text-lg font-semibold text-slate-800">
+                      Are you sure you want to delete this user?
+                    </h2>
+                    <div class="mt-6 flex space-x-4">
+                      <DangerButton @click="($event) => deleteUser(user.id)"
+                        >Delete</DangerButton
+                      >
+                      <SecondaryButton @click="closeModal">Cancel</SecondaryButton>
+                    </div>
+                  </div>
+                </Modal>
               </TableDataCell>
             </TableRow>
           </template>
