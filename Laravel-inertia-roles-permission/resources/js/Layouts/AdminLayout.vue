@@ -18,13 +18,7 @@ const showingNavigationDropdown = ref(false);
     >
       <div>
         <div class="-mx-6 px-6 py-4">
-          <a href="#" title="home">
-            <img
-              src="https://tailus.io/sources/blocks/stats-cards/preview/images/logo.svg"
-              class="w-32"
-              alt="tailus logo"
-            />
-          </a>
+          {{ $page.props.auth.user.name }}
         </div>
 
         <ul class="space-y-2 tracking-wide mt-8">
