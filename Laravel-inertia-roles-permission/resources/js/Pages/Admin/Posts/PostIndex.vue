@@ -23,7 +23,7 @@ const closeModal = () => {
   showConfirmDeletePostModal.value = false;
 };
 
-const deleteRole = (id) => {
+const deletePost = (id) => {
   form.delete(route("posts.destroy", id), {
     onSuccess: () => closeModal(),
     preserveScroll: true,
@@ -56,7 +56,7 @@ const deleteRole = (id) => {
           <template #default>
             <TableRow v-for="post in posts" :key="post.id" class="border-b text-black">
               <TableDataCell>{{ post.id }}</TableDataCell>
-              <TableDataCell>{{ post.name }}</TableDataCell>
+              <TableDataCell>{{ post.title }}</TableDataCell>
               <TableDataCell class="space-x-6">
                 <Link
                   :href="route('posts.edit', post.id)"
