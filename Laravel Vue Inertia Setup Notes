@@ -1,0 +1,30 @@
+p@55w0rD123
+
+
+laravel new <APPNAME>
+cd <AppNAME>
+npm install vue@latest
+
+<<< Follow the InertiaJS Documentation
+
+npm install @vitejs/plugin-vue
+
+(Configure vite.config.js and import in it)
+
+<<< Setup Tailwind css documentation >>>
+
+
+------------------------------------------------------------------
+
+sail artisan cache:clear
+sail artisan view:clear
+sail artisan optimize
+sail artisan route:clear
+sail artisan config:clear
+sail artisan optimize
+sail artisan vendor:publish --tag=laravel-assets --ansi --force
+sail artisan migrate --graceful --ansi
+sail artisan serve
+
+
+
